@@ -1,3 +1,49 @@
+let questions = [
+  {
+    ques: "What is the capital of India?",
+    ans: "Delhi",
+    options: ["Bengaluru", "Delhi", "Hyderabad", "Chennai"],
+  },
+  {
+    ques: "Which planet is known as the Red Planet?",
+    ans: "Mars",
+    options: ["Venus", "Mars", "Jupiter", "Saturn"],
+  },
+  {
+    ques: "What is the largest mammal on Earth?",
+    ans: "Blue Whale",
+    options: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+  },
+  {
+    ques: "In which year did World War II end?",
+    ans: "1945",
+    options: ["1939", "1942", "1945", "1950"],
+  },
+  {
+    ques: "Who wrote 'Romeo and Juliet'?",
+    ans: "William Shakespeare",
+    options: [
+      "Jane Austen",
+      "Charles Dickens",
+      "William Shakespeare",
+      "Leo Tolstoy",
+    ],
+  },
+];
+
+
+try {
+  let storedQuestions = JSON.parse(localStorage.getItem('questions'));
+  // Check if questions are already stored in localStorage
+  if (!storedQuestions) {
+      localStorage.setItem('questions', JSON.stringify(questions));
+  }
+} catch (error) {
+  console.log(error);
+  console.error('Clearing the entire localStorage due to an unexpected error.');
+  localStorage.clear();
+}
+
 let questionList = JSON.parse(localStorage.getItem('questions'));
 
 console.log(localStorage.getItem('questions'))
