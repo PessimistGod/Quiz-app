@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <section class="max-w-4xl mx-auto my-24">
+      <div class="font-bold text-2xl">Add Question</div>
+        <form onsubmit="handleSubmit(event)">
+        <input name="question" class="py-2 border-2 border-gray-200 rounded-lg px-2 focus:outline-none focus:border-black focus:scale-105 w-full md:w-3/4 my-6 md:mx-4" type="text" placeholder="Question Description">
+        <div class="grid grid-cols-2 gap-4">
+            <input name="first" class="option bg-white p-4 rounded-lg border-2 border-gray-200 hover:bg-gray-50 shadow-lg cursor-pointer text-center focus:outline-none focus:border-black" type="text" placeholder="option 1">
+            <input name="second" class="option bg-white p-4 rounded-lg border-2 border-gray-200 hover:bg-gray-50 shadow-lg cursor-pointer text-center focus:outline-none focus:border-black" type="text" placeholder="option 2">
+            <input name="third" class="option bg-white p-4 rounded-lg border-2 border-gray-200 hover:bg-gray-50 shadow-lg cursor-pointer text-center focus:outline-none focus:border-black" type="text" placeholder="option 3">
+            <input name="fourth" class="option bg-white p-4 rounded-lg border-2 border-gray-200 hover:bg-gray-50 shadow-lg cursor-pointer text-center focus:outline-none focus:border-black" type="text" placeholder="option 4">
+        </div>
+
+        <div class="max-w-xl mx-auto my-6">
+            <label for="correctAnswer">From 1 to 4 select the right option for the question</label>
+        <input id="correctAnswer" name="answer" class="option bg-white p-4 rounded-lg border-2 border-gray-200 hover:bg-gray-50 shadow-lg cursor-pointer text-center focus:outline-none focus:border-black mx-2 my-2" type="number" max="4" min="1">
+    </div>
+
+    <div class="flex justify-center">
+        <input class="bg-green-500 text-white w-1/2 py-3 rounded-md font-semibold text-lg focus:outline-none" type="submit" value="Add Question">
+    </div>
+    </form>
+    </section>
+    <div class="absolute top-4 right-4">
+        <button class="px-4 py-3 bg-pink-300 rounded-xl hover:bg-pink-400"><a href="/">Take Test</a></button>
+    </div>
+  </body>
+  <script src="javascript/addQuestion.js"></script>
+</html>

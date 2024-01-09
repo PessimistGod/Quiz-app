@@ -1,39 +1,11 @@
-let questions = [
-  {
-    ques: "What is the capital of India?",
-    ans: "Delhi",
-    options: ["Bengaluru", "Delhi", "Hyderabad", "Chennai"],
-  },
-  {
-    ques: "Which planet is known as the Red Planet?",
-    ans: "Mars",
-    options: ["Venus", "Mars", "Jupiter", "Saturn"],
-  },
-  {
-    ques: "What is the largest mammal on Earth?",
-    ans: "Blue Whale",
-    options: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
-  },
-  {
-    ques: "In which year did World War II end?",
-    ans: "1945",
-    options: ["1939", "1942", "1945", "1950"],
-  },
-  {
-    ques: "Who wrote 'Romeo and Juliet'?",
-    ans: "William Shakespeare",
-    options: [
-      "Jane Austen",
-      "Charles Dickens",
-      "William Shakespeare",
-      "Leo Tolstoy",
-    ],
-  },
-];
+let questionList = JSON.parse(localStorage.getItem('questions'));
+
+console.log(localStorage.getItem('questions'))
+
 
 let questionIndex = 0;
 let score = 0;
-document.getElementById("question").innerHTML = questions[questionIndex].ques;
+document.getElementById("question").innerHTML = questionList[questionIndex].ques;
 
 let questionDisplay = document.getElementById("questionButtonDisplay");
 let resultDisplay = document.getElementById("result");
@@ -47,26 +19,22 @@ let ButtonNext = document.getElementById("next-btn")
 
 
 
-questionDisplay.innerHTML = questions.map((item, index) => {
+questionDisplay.innerHTML = questionList.map((item, index) => {
     return `<div id="button${index + 1}" class="px-4 py-2 bg-blue-100 mx-2 rounded-2xl cursor-pointer" onclick="changeQuestionByIndex(${index})">${index + 1}</div>`;
   }).join('');
 
 function displayQuestion() {
-  document.getElementById("question").innerHTML = questions[questionIndex].ques;
-  document.getElementsByClassName("option")[0].innerHTML =
-    questions[questionIndex].options[0];
-  document.getElementsByClassName("option")[1].innerHTML =
-    questions[questionIndex].options[1];
-  document.getElementsByClassName("option")[2].innerHTML =
-    questions[questionIndex].options[2];
-  document.getElementsByClassName("option")[3].innerHTML =
-    questions[questionIndex].options[3];
+  document.getElementById("question").innerHTML = questionList[questionIndex].ques;
+  document.getElementsByClassName("option")[0].innerHTML = questionList[questionIndex].options[0];
+  document.getElementsByClassName("option")[1].innerHTML = questionList[questionIndex].options[1];
+  document.getElementsByClassName("option")[2].innerHTML = questionList[questionIndex].options[2];
+  document.getElementsByClassName("option")[3].innerHTML = questionList[questionIndex].options[3];
 }
 
 displayQuestion();
 
 function selectedOption(data) {
-  if (questions[questionIndex].ans === questions[questionIndex].options[data]) {
+  if (questionList[questionIndex].ans === questionList[questionIndex].options[data]) {
     //Right Answer
     console.log("Answer is Right");
     score++;
@@ -83,8 +51,8 @@ function selectedOption(data) {
 function changeQuestion(value) {
   //increment or decrement value
   questionIndex += value;
-  if (questionIndex < questions.length && questionIndex >= 0) {
-    document.getElementById("question").innerHTML = questions[questionIndex].ques;
+  if (questionIndex < questionList.length && questionIndex >= 0) {
+    document.getElementById("question").innerHTML = questionList[questionIndex].ques;
     disableButton(questionIndex-1);
     displayQuestion();
     // nextButton.disabled = false;
@@ -103,7 +71,7 @@ function changeQuestion(value) {
 function changeQuestionByIndex(index) {
     disableButton(questionIndex);
     questionIndex = index;
-    document.getElementById("question").innerHTML = questions[questionIndex].ques;
+    document.getElementById("question").innerHTML = questionList[questionIndex].ques;
     displayQuestion();
     disableButton(index);
     // nextButton.disabled = false;
