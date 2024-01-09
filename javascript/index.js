@@ -95,7 +95,7 @@ function changeQuestion(value) {
     scoreDiv.style.display = "none"
     ButtonNext.style.display = "none"
     resultDisplay.style.display = "block";
-    resultDisplay.innerHTML = `<div class="w-full h-[80vh] flex justify-center items-center text-4xl cursor-pointer" onclick={}>Your Score: ${score}</div>`;
+    resultDisplay.innerHTML = `<div class="w-full h-[80vh] flex justify-center items-center text-4xl cursor-pointer" onclick="reloadPage()">Your Score: ${score}</div>`;
     // nextButton.disabled = true;
 }
 }
@@ -116,3 +116,7 @@ function changeQuestionByIndex(index) {
     disableButton.classList.add("cursor-not-allowed", "opacity-50");
     disableButton.style.pointerEvents = "none";
 }
+
+function reloadPage() {
+    location.reload();
+  }
